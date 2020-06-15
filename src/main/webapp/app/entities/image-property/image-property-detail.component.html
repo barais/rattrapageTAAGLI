@@ -1,0 +1,53 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="imageProperty">
+            <h2><span>Image Property</span> {{imageProperty.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span>Label</span></dt>
+                <dd>
+                    <span>{{imageProperty.label}}</span>
+                </dd>
+                <dt><span>Height</span></dt>
+                <dd>
+                    <span>{{imageProperty.height}}</span>
+                </dd>
+                <dt><span>Width</span></dt>
+                <dd>
+                    <span>{{imageProperty.width}}</span>
+                </dd>
+                <dt><span>X</span></dt>
+                <dd>
+                    <span>{{imageProperty.x}}</span>
+                </dd>
+                <dt><span>Y</span></dt>
+                <dd>
+                    <span>{{imageProperty.y}}</span>
+                </dd>
+                <dt><span>H VG Color</span></dt>
+                <dd>
+                    <span>{{imageProperty.hVGColor}}</span>
+                </dd>
+                <dt><span>Entry</span></dt>
+                <dd>
+                    <div *ngIf="imageProperty.entryId">
+                        <a [routerLink]="['/vipo-entry', imageProperty.entryId, 'view']">{{imageProperty.entryId}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/image-property', imageProperty.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

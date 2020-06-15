@@ -1,0 +1,67 @@
+@paginate(pagination)
+@dto(mapstruct)
+@service(serviceImpl)
+entity Store {
+	name String required
+    address String required
+    postalCode String required
+    city String required
+    country String required
+}
+
+@paginate(pagination)
+@dto(mapstruct)
+@service(serviceImpl)
+entity Vipo {
+	name String required
+    longitude String
+    lattitude String
+    createdDate LocalDate required
+}
+
+@paginate(pagination)
+@dto(mapstruct)
+@service(serviceImpl)
+entity VipoEntry {
+    registerDate LocalDate required
+    imageName String required
+
+}
+
+@paginate(pagination)
+@dto(mapstruct)
+@service(serviceImpl)
+entity ImageProperty {
+	label String required
+    height Integer required
+    width Integer required
+    x Integer required
+    y Integer required
+    hVGColor String
+
+}
+
+
+relationship OneToOne {
+	Store{user(login)} to User with jpaDerivedIdentifier
+}
+
+relationship OneToOne {
+	Store{vipo(name)} to Vipo{store(name)}
+}
+
+
+relationship OneToOne {
+	Vipo{user(login)} to User with jpaDerivedIdentifier
+}   
+
+relationship OneToMany {
+	VipoEntry{props(label)} to ImageProperty{entry}
+}
+
+
+relationship OneToMany {
+	Vipo{entries} to VipoEntry{vipo}
+}
+
+

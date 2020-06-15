@@ -1,0 +1,53 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="store">
+            <h2><span>Store</span> {{store.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span>Name</span></dt>
+                <dd>
+                    <span>{{store.name}}</span>
+                </dd>
+                <dt><span>Address</span></dt>
+                <dd>
+                    <span>{{store.address}}</span>
+                </dd>
+                <dt><span>Postal Code</span></dt>
+                <dd>
+                    <span>{{store.postalCode}}</span>
+                </dd>
+                <dt><span>City</span></dt>
+                <dd>
+                    <span>{{store.city}}</span>
+                </dd>
+                <dt><span>Country</span></dt>
+                <dd>
+                    <span>{{store.country}}</span>
+                </dd>
+                <dt><span>User</span></dt>
+                <dd>
+                    {{store.userLogin}}
+                </dd>
+                <dt><span>Vipo</span></dt>
+                <dd>
+                    <div *ngIf="store.vipoId">
+                        <a [routerLink]="['/vipo', store.vipoId, 'view']">{{store.vipoName}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/store', store.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

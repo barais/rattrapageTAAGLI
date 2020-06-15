@@ -1,0 +1,37 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="vipoEntry">
+            <h2><span>Vipo Entry</span> {{vipoEntry.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span>Register Date</span></dt>
+                <dd>
+                    <span>{{vipoEntry.registerDate}}</span>
+                </dd>
+                <dt><span>Image Name</span></dt>
+                <dd>
+                    <span>{{vipoEntry.imageName}}</span>
+                </dd>
+                <dt><span>Vipo</span></dt>
+                <dd>
+                    <div *ngIf="vipoEntry.vipoId">
+                        <a [routerLink]="['/vipo', vipoEntry.vipoId, 'view']">{{vipoEntry.vipoId}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/vipo-entry', vipoEntry.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>
